@@ -1,24 +1,21 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./components/Home";
-import { useState } from "react";
+import { Nav } from "./components/Nav";
+import Trending from "./components/Trending";
+import Search from "./components/Search";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
-  const [name, setName] = useState("");
   return (
     <>
-      <h1>Hola mundo</h1>
-      <form onSubmit={(e) => {
-        e.preventDefault()
-        setName(e.target.intro.value);
-      }}>
-        <label>
-          <input name="intro" placeholder="introduce un nombre"></input>
-        </label>
-        <button type="submit">Enviar</button>
-      </form>
+      <Nav></Nav>
       <Routes>
-        <Route path="/" element={<Home name={name} />} />
+        <Route path="/goit-react-hw-05-movies/" element={<Trending />} />
+        <Route path="/goit-react-hw-05-movies/movies" element={<Search />} />
+        <Route
+          path="/goit-react-hw-05-movies/movies/:movieId"
+          element={<MovieDetails />}
+        />
       </Routes>
     </>
   );
