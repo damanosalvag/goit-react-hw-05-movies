@@ -1,4 +1,4 @@
-import { getTrendingMovies } from "../services/call-api";
+import { getMoviesList } from "../services/call-api";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Trending = () => {
   const [trending, setTrending] = useState([]);
   const handleTrending = async () => {
-    const res = await getTrendingMovies();
+    const res = await getMoviesList("trending");
     console.log(res);
     setTrending(res);
   };

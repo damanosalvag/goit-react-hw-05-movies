@@ -6,23 +6,29 @@ const apiInstance = axios.create({
 });
 
 
-export const getTrendingMovies = async () => {
+
+export const getMoviesList = async (path, query) => {
+  const url = path=='search'
+    ? `/${path}/movie?query=${query}&api_key=${API_KEY}`
+    : `/${path}/movie/day?api_key=${API_KEY}`;
   const response = await apiInstance
-    .get(`/trending/movie/day?api_key=${API_KEY}`)
+    .get(url)
     .then((res) => res.data)
     .then((data) => data.results)
     .catch((err) => err);
   return response;
 };
 
-export const getDetailMovie = async (id) => {
+export const getDetailMovie = async (id, path) => {
+  const url = path
+    ? `/movie/${id}/${path}?api_key=${API_KEY}`
+    : `/movie/${id}?api_key=${API_KEY}`;
   const response = await apiInstance
-    .get(`/movie/${id}?api_key=${API_KEY}`)
+    .get(url)
     .then((res) => res.data)
     .catch((err) => err);
   return response;
 };
-
 
 
 
