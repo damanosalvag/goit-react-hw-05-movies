@@ -7,7 +7,6 @@ const Trending = () => {
   const [trending, setTrending] = useState([]);
   const handleTrending = async () => {
     const res = await getMoviesList("trending");
-    console.log(res);
     setTrending(res);
   };
   useEffect(() => {
@@ -21,7 +20,9 @@ const Trending = () => {
         <ul>
           {trending.map((movie) => (
             <li key={nanoid(5)}>
-              <Link to={`movies/${movie.id}`}>
+              <Link
+                to={`movies/${movie.id}`}
+              >
                 {movie.title}
               </Link>
             </li>

@@ -1,7 +1,7 @@
-import { Link, Outlet } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getDetailMovie } from "../services/call-api";
+import BackToList from "./BackTo";
 import "../App.css";
 
 const MovieDetails = () => {
@@ -10,20 +10,21 @@ const MovieDetails = () => {
 
   const handleGetDetailMovie = async () => {
     const res = await getDetailMovie(movieId);
-    console.log(res);
     setMovieDetail(res);
   };
   const genresList = movieDetail.genres
     ? movieDetail.genres.map((genre) => genre.name).join(", ")
-      : "";
-    const score = (movieDetail.vote_average / 10) * 100;
+    : "";
+  const score = (movieDetail.vote_average / 10) * 100;
 
   useEffect(() => {
     handleGetDetailMovie();
-  },[]);
+  }, []);
+
 
   return (
     <div className="movie-detail-container">
+      <BackToList />
       <section className="movie-detail">
         <div className="movie-detail__poster">
           <img

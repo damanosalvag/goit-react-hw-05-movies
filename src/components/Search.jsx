@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { getMoviesList } from "../services/call-api";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { nanoid } from "nanoid";
 
 export const Search = () => {
-  const [query, setQuery] = useState("");
   const [listMovies, setListMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get("query") ?? "";
 
   const handleChange = (e) => {
-    setQuery(e.target.value);
+    const query = e.target.value;
+    const nextParams = query !== "" ? { query } : {};
+    setSearchParams(nextParams);
   };
   const handleMovieList = async () => {
-    const movies = await getMoviesList("search", query);
+    const movies = await getMoviesList("search", searchQuery);
     setListMovies(movies);
-    console.log(query);
   };
   useEffect(() => {
     handleMovieList();
@@ -30,7 +32,7 @@ export const Search = () => {
           type="text"
           placeholder="Search"
           onChange={handleChange}
-          value={query}
+          value={searchQuery}
         />
         <button type="submit">Search</button>
       </form>
@@ -39,7 +41,11 @@ export const Search = () => {
           {listMovies ? (
             listMovies.map((movie) => (
               <li key={nanoid(5)}>
-                <Link to={`${movie.id}`}>{movie.original_title}</Link>
+                <Link
+                  to={`${movie.id}`}
+                >
+                  {movie.original_title}
+                </Link>
               </li>
             ))
           ) : (
