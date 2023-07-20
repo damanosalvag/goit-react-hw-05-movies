@@ -25,8 +25,8 @@ const Cast = () => {
             <img
               src={
                 character.profile_path
-                  ? `https://image.tmdb.org/t/p/w500/${character.profile_path}`
-                  : "/default_profile.png"
+                  ? `https://image.tmdb.org/t/p/w500${character.profile_path}`
+                  : "/goit-react-hw-05-movies/default_profile.png"
               }
               className="cast-list__item-img"
             ></img>
