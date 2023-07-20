@@ -11,3 +11,135 @@
   justify-content: start;
   gap: 15px;
 }
+/* Trending render */
+
+.trending-title{
+  margin-left: 40px;
+}
+
+
+/* Search form */
+.search-form{
+  margin-top: 20px;
+  margin-left: 40px;
+  border: solid 1px #646cff;
+  padding: 10px;
+  width: 300px;
+}
+.search-input{
+  width: 210px;
+  padding-left: 8px;
+}
+
+.submit-btn{
+  margin-left: 10px;
+}
+.search-title{
+  margin-left: 40px;
+}
+
+/* Movie details */
+
+.movie-detail{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding-bottom: 15px;
+  border-bottom: solid 1px white;
+}
+.movie-detail__poster{
+  padding-left: 40px;
+}
+.movie-detail__poster--img{
+  width: auto;
+  height: 400px;
+}
+.movie-detail__summary{
+  padding: 0 40px;
+  max-width: 800px;
+}
+.movie-detail__summary--score{
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+.movie-detail__summary--overview{
+  color: #646cff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.movie-detail__summary--genres{
+  color: #646cff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+/* More information */
+
+.movie-more-info{
+  margin-top: 1em;
+  padding-bottom: 15px;
+  border-bottom: solid 1px white;
+}
+.movie-more-info__container{
+  padding-left: 40px;
+}
+
+.movie-more-info__title{
+  color: #646cff;
+}
+.movie-more-info__list{
+  margin: 0;
+}
+.movie-more-info__list--item{
+  list-style:circle;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Desing cast */
+.movie-cast__title{
+  padding-left: 40px;
+}
+.cast-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 40px;
+}
+.cast-list__item{
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+.cast-list__item-img{
+  width: auto;
+}
+.cast-list__item-name{
+  color: #646cff;
+}
+.cast-list__item-character{
+  font-size: 15px;
+  overflow-wrap: break-word;
+}
+
+/* Reviews */
+.movie-more-info__reviews-title{
+  margin-left: 40px;
+}
+
+/* Back to */
+.back-to-list{
+  margin: 10px auto;
+}
+.back-to-list__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Loading... */
+.loading-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

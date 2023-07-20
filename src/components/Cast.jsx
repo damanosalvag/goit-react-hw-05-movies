@@ -2,6 +2,7 @@ import { getDetailMovie } from "../services/call-api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { nanoid } from "nanoid";
+import "../App.css";
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -16,16 +17,21 @@ const Cast = () => {
     handleCastList();
   }, []);
   return (
-    <section className="">
-      <h3>Cast</h3>
-      <ul>
+    <section className="movie-cast">
+      <h3 className="movie-cast__title">Cast</h3>
+      <ul className="cast-list">
         {cast.map((character) => (
-          <li key={nanoid(5)}>
+          <li key={nanoid(5)} className="cast-list__item">
             <img
-              src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
+              src={
+                character.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${character.profile_path}`
+                  : "/default_profile.png"
+              }
+              className="cast-list__item-img"
             ></img>
-            <strong>{character.name}</strong>
-            <p>{character.character}</p>
+            <strong className="cast-list__item-name">{character.name}</strong>
+            <p className="cast-list__item-character">{character.character}</p>
           </li>
         ))}
       </ul>

@@ -17,14 +17,18 @@ const Reviews = () => {
   }, []);
   return (
     <section>
-      <h3>Reviews</h3>
+      <h3 className="movie-more-info__reviews-title">Reviews</h3>
       <ul>
-        {reviews.length > 0 ? reviews.map((review) => (
-          <li key={nanoid(5)}>
-            <strong>{review.author}</strong>
-            <p>{review.content}</p>
-          </li>
-        )): <p>No reviews yet</p>}
+        {reviews.length > 0 ? (
+          reviews.map((review) => (
+            <li key={nanoid(5)}>
+              <strong>{review.author}</strong>
+              <p>{review.content}</p>
+            </li>
+          ))
+        ) : (
+          <p>No reviews yet</p>
+        )}
       </ul>
     </section>
   );

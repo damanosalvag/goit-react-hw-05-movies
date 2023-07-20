@@ -1,7 +1,9 @@
 import { getMoviesList } from "../services/call-api";
 import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
-import { Link } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { ProgressBar } from "react-loader-spinner";
+import "../App.css";
+const MoviesList = lazy(() => import("./MoviesList"));
 
 const Trending = () => {
   const [trending, setTrending] = useState([]);
@@ -15,22 +17,24 @@ const Trending = () => {
 
   return (
     <>
-      <h2>Trending</h2>
-      {trending.length > 0 ? (
-        <ul>
-          {trending.map((movie) => (
-            <li key={nanoid(5)}>
-              <Link
-                to={`movies/${movie.id}`}
-              >
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>no found</p>
-      )}
+      <h2 className="trending-title">Trending</h2>
+      <Suspense
+        fallback={
+          <div className="loading-list">
+            <ProgressBar
+              height="80"
+              width="80"
+              ariaLabel="progress-bar-loading"
+              wrapperStyle={{}}
+              wrapperClass="progress-bar-wrapper"
+              borderColor="#ffffff"
+              barColor="#646cff"
+            />
+          </div>
+        }
+      >
+        <MoviesList movies={trending} baseUrl={"movies/"} />
+      </Suspense>
     </>
   );
 };
